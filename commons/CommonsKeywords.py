@@ -5,4 +5,4 @@ class CommonsKeywords(UiCommonsKeywords):
 
     def __init__(self):
         _ui_commons = UiCommons()
-        UiCommons.__init__(_ui_commons)
+        UiCommonsKeywords.__init__(_ui_commons)
