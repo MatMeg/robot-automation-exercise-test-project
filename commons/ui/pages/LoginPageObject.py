@@ -1,13 +1,14 @@
 from PageObjectModel import PageObjectModel
+from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
 
 class LoginPageObject(PageObjectModel):
 
-    def __init__(self):
-        PageObjectModel.__init__()
-        self.e_mail_input = ''
-        self.password_input = ''
-        self.login_button = ''
+    def __init__(self, builtIn : BuiltIn):
+        PageObjectModel.__init__(self, builtIn)
+        self.e_mail_input = '//*[@class="login-form"]/*/input[@name="email"]'
+        self.password_input = '//*[@class="login-form"]/*/input[@name="password"]'
+        self.login_button = '//*[@class="login-form"]/*/button'
     
     @not_keyword
     def input_existing_account_user_on_login(self, user: str) -> None:

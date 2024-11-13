@@ -1,5 +1,8 @@
+import sys
 from typing import Protocol
-from interfaces.PageInterfaces import ProductsPageObjectInterface
+from robot.api.deco import keyword
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import ProductsPageObjectInterface
 from robot.api.deco import keyword
 from robot.api.deco import not_keyword
 

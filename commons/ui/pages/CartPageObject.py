@@ -1,13 +1,14 @@
 from PageObjectModel import PageObjectModel
+from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
 
 class CartPageObject(PageObjectModel):
 
-    def __init__(self):
-        PageObjectModel.__init__()
-        self.products_elements = ''
-        self.proceed_to_checkout_button = ''
-        self.register_login_link = ''
+    def __init__(self, builtIn : BuiltIn):
+        PageObjectModel.__init__(self, builtIn)
+        self.products_elements = '//td[@class="cart_description"]/h4/a'
+        self.proceed_to_checkout_button = '//a[contains(text(),"Proceed To Checkout")]'
+        self.register_login_link = '//u[text()="Register / Login"]/parent::a[@href="/login"]'
     
     @not_keyword
     def verify_products_visible_on_cart(self, expected_products:list) -> None:

@@ -1,8 +1,10 @@
-from commons.ui.keywords import UiCommonsKeywords
-from ui.pages import UiCommons
+import sys
+sys.path.append('./commons/ui/keywords')
+from UiCommonsKeywords import UiCommonsKeywords
+sys.path.append('./commons/ui/pages')
+from UiCommons import UiCommons
 
 class CommonsKeywords(UiCommonsKeywords):
-
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     def __init__(self):
-        _ui_commons = UiCommons()
-        UiCommonsKeywords.__init__(_ui_commons)
+        UiCommonsKeywords.__init__(self, UiCommons())

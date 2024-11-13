@@ -1,5 +1,7 @@
-from interfaces.PageInterfaces import PaymentPageObjectInterface
+import sys
 from robot.api.deco import keyword
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import PaymentPageObjectInterface
 
 class PaymentKeywordsCommons:
 

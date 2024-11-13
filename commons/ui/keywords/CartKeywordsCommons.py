@@ -1,8 +1,10 @@
+import sys
 from robot.api.deco import keyword
-from interfaces.PageInterfaces import CartPageObjectInterface
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import CartPageObjectInterface
 
 class CartKeywordsCommons:
-    
+
     def __init__(self, cart_page_object : CartPageObjectInterface):
         self._cart_page_object = cart_page_object
 

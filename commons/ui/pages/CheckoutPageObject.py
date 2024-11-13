@@ -1,12 +1,13 @@
 from PageObjectModel import PageObjectModel
+from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
 
 class CheckoutPageObject(PageObjectModel):
 
-    def __init__(self):
-        PageObjectModel.__init__()
-        self.products_elements = ''
-        self.place_order_button = ''
+    def __init__(self, builtIn : BuiltIn):
+        PageObjectModel.__init__(self, builtIn)
+        self.products_elements = '//td[@class="cart_description"]/h4/a'
+        self.place_order_button = '//a[@href="/payment"]'
 
     @not_keyword
     def verify_products_visible_on_checkout(self, expected_products:list) -> None:

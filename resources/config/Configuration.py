@@ -12,7 +12,7 @@ _default_firefox_path = f'{_project_path}\\resources\\browser\\Firefox.exe'
 _default_firefox_driver_path = f'{_project_path}\\resources\\browser\\driver\\geckodriver.exe'
 _default_screenshot_allowed = True
 
-BROWSER = f'{'Headless' if os.environ.get('HEADLESS', _default_headless) else ''}{os.environ.get('BROWSER', _default_browser).lower()}'
+BROWSER = f'{"Headless" if os.environ.get("HEADLESS", _default_headless) else ""}{os.environ.get("BROWSER", _default_browser).lower()}'
 
 CHROME_PATH = os.environ.get('CHROME_PATH', _default_chrome_path)
 CHROME_DRIVER_PATH = os.environ.get('CHROME_DRIVER_PATH', _default_chrome_driver_path)

@@ -5,13 +5,13 @@ import time
 
 class PageObjectModel(SeleniumLibrary):
 
-    def __init__(self):
-        SeleniumLibrary.__init__()
-        self.builtIn = BuiltIn()
+    def __init__(self, builtIn : BuiltIn):
+        SeleniumLibrary.__init__(self)
+        self.builtIn = builtIn
     
     @not_keyword
     def log(self, msg:str):
-        self.builtIn.log(f'<p>{msg}</p>',htmt=True)
+        self.builtIn.log(f'<p>{msg}</p>',html=True)
 
     @not_keyword
     def take_screenshot(self, msg:str):

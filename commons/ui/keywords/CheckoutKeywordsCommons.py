@@ -1,5 +1,7 @@
+import sys
 from robot.api.deco import keyword
-from interfaces.PageInterfaces import CheckoutPageObjectInterface
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import CheckoutPageObjectInterface
 
 class CheckoutKeywordsCommons:
     

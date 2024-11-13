@@ -1,15 +1,16 @@
 from PageObjectModel import PageObjectModel
+from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
 
 class ProductsPageObject(PageObjectModel):
 
-    def __init__(self):
-        PageObjectModel.__init__()
-        self.search = ''
-        self.search_button = ''
-        self.products_list = ''
-        self.get_product_element = lambda product: [element for element in self.find_elements(self.products_list) if element.text() == product][0]
-        self.continue_shopping_button = ''
+    def __init__(self, builtIn : BuiltIn):
+        PageObjectModel.__init__(self, builtIn)
+        self.search = '//input[@id="search_product"]'
+        self.search_button = '//button[@id="submit_search"]'
+        self.products_list = '//div[@class="productinfo text-center"]/p'
+        self.get_product_element = lambda product: self.products_list + '[@text=\"'+ product +'\"]/following-sibling::a'
+        self.continue_shopping_button = '//button[text()="Continue Shopping"]'
 
     @not_keyword
     def input_search_criteria_on_products(self, search:str) -> None:  

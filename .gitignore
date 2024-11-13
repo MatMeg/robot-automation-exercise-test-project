@@ -163,3 +163,6 @@ cython_debug/
 
 interactive_console_output.xml
 .pyc
+log.html
+output.xml
+report.html

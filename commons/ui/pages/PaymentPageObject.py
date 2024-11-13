@@ -1,16 +1,17 @@
 from PageObjectModel import PageObjectModel
+from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
 
 class PaymentPageObject(PageObjectModel):
 
-    def __init__(self):
-        PageObjectModel.__init__()
-        self.name_input = ''
-        self.number_input = ''
-        self.cvv_input = ''
-        self.month_input = ''
-        self.year_input = ''
-        self.pay_and_confirm_button = ''
+    def __init__(self, builtIn : BuiltIn):
+        PageObjectModel.__init__(self, builtIn)
+        self.name_input = '//input[@name="name_on_card"]'
+        self.number_input = '//input[@name="card_number"]'
+        self.cvv_input = '//input[@name="cvc"]'
+        self.month_input = '//input[@name="expiry_month"]'
+        self.year_input = '//input[@name="expiry_year"]'
+        self.pay_and_confirm_button = '//button[@id="submit"]'
 
     @not_keyword
     def input_card_name_on_payment(self, name:str) -> None: 

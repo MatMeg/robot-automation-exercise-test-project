@@ -49,12 +49,6 @@ class NavBarPageObjectInterface(PageObjectModelInterface):
     def verify_user_logged_in_on_navbar(self, user:str) -> None: ...
 
 class UiCommonsInterface(BrowserInterface, CartPageObjectInterface, CheckoutPageObjectInterface, DialogObjectInterface, PaymentPageObjectInterface, ProductsPageObjectInterface, ConfirmationPageObjectInterface):
-    BrowserInterface.__init__()
-    CartPageObjectInterface.__init__()
-    CheckoutPageObjectInterface.__init__()
-    DialogObjectInterface.__init__()
-    PaymentPageObjectInterface.__init__()
-    ProductsPageObjectInterface.__init__()
-    ConfirmationPageObjectInterface.__init__()
+    def __init__(self) -> None: ...
 
     

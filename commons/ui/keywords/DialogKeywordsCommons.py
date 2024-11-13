@@ -1,5 +1,7 @@
-from interfaces.PageInterfaces import DialogObjectInterface
+import sys
 from robot.api.deco import keyword
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import DialogObjectInterface
 
 class DialogKeywordsCommons:
 

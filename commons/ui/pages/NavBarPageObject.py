@@ -1,13 +1,14 @@
 from PageObjectModel import PageObjectModel
+from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
 
 class NavBarPageObject(PageObjectModel):
 
-    def __init__(self):
-        PageObjectModel.__init__()
-        self.products_icon = ''
-        self.cart_icon = ''
-        self.user_icon = ''
+    def __init__(self, builtIn : BuiltIn):
+        PageObjectModel.__init__(self, builtIn)
+        self.products_icon = '//*[@class="nav navbar-nav"]/*/*[@href="/products"]'
+        self.cart_icon = '//*[@class="nav navbar-nav"]/*/*[@href="/view_cart"]'
+        self.user_icon = '//*[contains(text(), "Logged")]/b'
 
     @not_keyword
     def click_products_on_navbar(self) -> None:  

@@ -1,5 +1,5 @@
 *** Settings ***
-Library  ../../CommonsResources.robot
+Resource  ./../../CommonsKeywords.resource
 Variables  ./data/OrderProductData.py
 
 *** Keywords ***
@@ -9,7 +9,7 @@ Navigate to products page without login
 
 Add "${category}": "${products_list}" to cart
     Search for "${category}" on products
-    Add products "${products}" to cart (continue shopping)
+    Add products "${products_list}" to cart (continue shopping)
     Select "cart" on navbar
 
 

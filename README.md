@@ -1,2 +1,5 @@
 # robot-automation-exercise-test-project
-a robot framework based project to exercise test automation
+This is a robot framework test exercise
+
+The test suite is on:
+./test/order/PaymentByCard.robot

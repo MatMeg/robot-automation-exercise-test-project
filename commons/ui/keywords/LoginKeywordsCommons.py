@@ -1,5 +1,7 @@
-from interfaces.PageInterfaces import LoginPageObjectInterface, NavBarPageObjectInterface
+import sys
 from robot.api.deco import keyword
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import LoginPageObjectInterface, NavBarPageObjectInterface
 
 class LoginKeyWordsCommons:
     _navbar_page_object = None

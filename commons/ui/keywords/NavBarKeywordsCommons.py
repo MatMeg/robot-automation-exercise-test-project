@@ -1,5 +1,7 @@
+import sys
 from robot.api.deco import keyword
-from interfaces.PageInterfaces import NavBarPageObjectInterface
+sys.path.append('./commons/ui/keywords/interfaces')
+from PageInterfaces import NavBarPageObjectInterface
 
 class NavBarKeywordsCommons:
     def __init__(self, navbar_page_object: NavBarPageObjectInterface):

@@ -3,5 +3,6 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"robot.pythonpath" : ["${workspaceFolder}/commons"]
 }
