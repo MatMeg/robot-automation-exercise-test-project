@@ -16,5 +16,4 @@ class PageObjectModel(SeleniumLibrary):
     @not_keyword
     def take_screenshot(self, msg:str):
         self.log(msg)
-        if self.builtIn.get_variable_value('${SCREENSHOT_ALLOWED}') :
-            self.capture_page_screenshot(f'Selenium {time.time()}.png')
+        self.capture_page_screenshot(f'Selenium {time.time()}.png')

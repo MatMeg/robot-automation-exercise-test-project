@@ -1,12 +1,9 @@
-import sys
-from robot.api.deco import keyword
-sys.path.append('./commons/ui/keywords/interfaces')
+from robot.api.deco import keyword, not_keyword
 from PageInterfaces import PaymentPageObjectInterface
 
 class PaymentKeywordsCommons:
 
-    def __init__(self, payment_object: PaymentPageObjectInterface):
-        self._payment_object = payment_object
+    _payment_object:PaymentPageObjectInterface = None
 
     @keyword('Confirm payment with card "${card}"')
     def confirm_card_payment(self, card:dict):
@@ -23,5 +20,9 @@ class PaymentKeywordsCommons:
         self._payment_object.input_card_name_on_payment(card['YYYY'])
         self._payment_object.take_screenshot('Click "Pay and Confirm"')
         self._payment_object.click_pay_and_confirm_on_payment()
+
+    @not_keyword
+    def init_payment_keywords_interfaces(self, payment_object: PaymentPageObjectInterface) -> None:
+        self._payment_object = payment_object
 
     

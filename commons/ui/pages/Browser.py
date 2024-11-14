@@ -1,24 +1,24 @@
 from PageObjectModel import PageObjectModel
 from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import not_keyword
-import os
+import datetime
+
 
 class Browser(PageObjectModel):
 
-    def __init__(self, builtIn : BuiltIn, url: str, browser: str, driver_path: str):
+    def __init__(self, builtIn : BuiltIn, url: str, browser: str, options):
         PageObjectModel.__init__(self, builtIn)
         self.url = url
         self.browser = browser
-        self.driver_path = driver_path
+        self.options = options
     
     @not_keyword
     def open_browser_test_page(self):
         '''
         Open browser on "Automation Exercise" page
-        '''
-        os.environ["PATH"] += os.pathsep + self.driver_path
-        print(f'{os.getenv("PATH")}')
-        self.open_browser(url=self.url, browser=self.browser)
+        '''   
+        self.open_browser(url=self.url, browser=self.browser, options=self.options)
+        self.click_button('//button[@class="fc-button fc-cta-consent fc-primary-button"]')
     
     @not_keyword
     def get_browse(self) -> str: 

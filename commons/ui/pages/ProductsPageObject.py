@@ -1,15 +1,16 @@
 from PageObjectModel import PageObjectModel
 from robot.libraries.BuiltIn import BuiltIn
+from selenium.webdriver.remote.webelement import WebElement
 from robot.api.deco import not_keyword
 
 class ProductsPageObject(PageObjectModel):
 
     def __init__(self, builtIn : BuiltIn):
         PageObjectModel.__init__(self, builtIn)
-        self.search = '//input[@id="search_product"]'
+        self.search_input = '//input[@id="search_product"]'
         self.search_button = '//button[@id="submit_search"]'
         self.products_list = '//div[@class="productinfo text-center"]/p'
-        self.get_product_element = lambda product: self.products_list + '[@text=\"'+ product +'\"]/following-sibling::a'
+        self.get_product_element = lambda product: '//*[text()=\"'+ product +'\"]/following-sibling::a'
         self.continue_shopping_button = '//button[text()="Continue Shopping"]'
 
     @not_keyword
@@ -26,13 +27,15 @@ class ProductsPageObject(PageObjectModel):
     def scroll_product_to_view_on_products(self, produc:str) -> None: 
         self.log(f'Scroll product "{produc}" into view')
         product_element = self.get_product_element(produc)
-        product_element.location_once_scrolled_into_view()
+        self.wait_until_page_contains_element(product_element, '10s')
+        self.scroll_element_into_view(product_element)
+        self.take_screenshot('element_here')
     
     @not_keyword
     def click_product_add_to_cart_on_products(self, produc:str) -> None:  
         self.log(f'Click {produc}\'s "Add to Cart"')
         product_element = self.get_product_element(produc)
-        product_element.click()
+        self.click_button(product_element)
     
     @not_keyword
     def click_continue_shopping_on_dialog_on_products(self) -> None: 

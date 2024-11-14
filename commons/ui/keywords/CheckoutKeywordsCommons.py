@@ -1,13 +1,9 @@
-import sys
-from robot.api.deco import keyword
-sys.path.append('./commons/ui/keywords/interfaces')
+from robot.api.deco import keyword,not_keyword
 from PageInterfaces import CheckoutPageObjectInterface
 
 class CheckoutKeywordsCommons:
     
-    def __init__(self, checkout_page_object: CheckoutPageObjectInterface):
-        self._checkout_page_object = checkout_page_object
-        
+    _checkout_page_object : CheckoutPageObjectInterface = None        
 
     @keyword('Place Order of "${products_list}"')
     def place_products_order(self, products_list:list):
@@ -20,6 +16,10 @@ class CheckoutKeywordsCommons:
         self._checkout_page_object.verify_products_visible_on_checkout(products_list)
         self._checkout_page_object.log('Click on <b>"Place Order"</b> button')
         self._checkout_page_object.click_place_order_on_checkout()
+
+    @not_keyword
+    def init_checkout_keywords_interfaces(self, checkout_page_object: CheckoutPageObjectInterface) -> None:
+        self._checkout_page_object = checkout_page_object
         
 
     

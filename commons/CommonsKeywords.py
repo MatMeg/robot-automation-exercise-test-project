@@ -7,4 +7,5 @@ from UiCommons import UiCommons
 class CommonsKeywords(UiCommonsKeywords):
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     def __init__(self):
-        UiCommonsKeywords.__init__(self, UiCommons())
+        super().__init__(UiCommons())
+        

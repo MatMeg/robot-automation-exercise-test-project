@@ -1,7 +1,7 @@
 SHIRTS='shirts'
 ORDER_TWO_SHIRTS_DATA={
     'order_list': {
-        SHIRTS : ['Colour Blocked Shirt – Sky Blue','Pure Cotton Neon Green Tshirt']
+        'shirts' : ['Colour Blocked Shirt – Sky Blue','Pure Cotton Neon Green Tshirt']
     },
     'login' : {
         'user' : 'autexercise',

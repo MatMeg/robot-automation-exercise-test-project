@@ -1,13 +1,10 @@
 import sys
-from robot.api.deco import keyword
-sys.path.append('./commons/ui/keywords/interfaces')
+from robot.api.deco import keyword, not_keyword
 from PageInterfaces import LoginPageObjectInterface, NavBarPageObjectInterface
 
 class LoginKeyWordsCommons:
-    _navbar_page_object = None
-
-    def __init__(self, login_page_object: LoginPageObjectInterface):
-        self._login_page_object = login_page_object
+    _navbar_page_object: NavBarPageObjectInterface = None
+    _login_page_object:LoginPageObjectInterface = None
 
     @keyword('Login with valid credendial "${account_dict}"')
     def login_to_account(self, account_dict:dict):
@@ -28,5 +25,7 @@ class LoginKeyWordsCommons:
         self._navbar_page_object.verify_user_logged_in_on_navbar(user)
         self._login_page_object.take_screenshot(f'Verify user <b>{user.upper()}</b> was successfully logged')
 
-    def init_login_keywords_interfaces(self, navbar_page_object : NavBarPageObjectInterface):
+    @not_keyword
+    def init_login_keywords_interfaces(self, navbar_page_object : NavBarPageObjectInterface, login_page_object: LoginPageObjectInterface) -> None:
+        self._login_page_object = login_page_object
         self._navbar_page_object = navbar_page_object

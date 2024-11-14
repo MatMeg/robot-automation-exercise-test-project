@@ -9,7 +9,7 @@ from robot.libraries.BuiltIn import BuiltIn
 from Browser import Browser
 import sys
 sys.path.append('./resources/config')
-from Configuration import AUTOMATION_EXERCISE_URL, BROWSER, DRIVER_PATH
+from Configuration import AUTOMATION_EXERCISE_URL, BROWSER, BROWSER_OPTIONS
 
 class UiCommons(Browser, 
                 CartPageObject, 
@@ -22,7 +22,7 @@ class UiCommons(Browser,
     
     def __init__(self):
         built_in = BuiltIn()
-        Browser.__init__(self, built_in, AUTOMATION_EXERCISE_URL, BROWSER, DRIVER_PATH)
+        Browser.__init__(self, built_in, AUTOMATION_EXERCISE_URL, BROWSER, BROWSER_OPTIONS)
         CartPageObject.__init__(self, built_in)
         CheckoutPageObject.__init__(self, built_in)
         ConfirmationPageObject.__init__(self, built_in)

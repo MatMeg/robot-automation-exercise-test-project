@@ -1,10 +1,6 @@
-import sys
 from typing import Protocol
-from robot.api.deco import keyword
-sys.path.append('./commons/ui/keywords/interfaces')
+from robot.api.deco import keyword, not_keyword
 from PageInterfaces import ProductsPageObjectInterface
-from robot.api.deco import keyword
-from robot.api.deco import not_keyword
 
 class DialogKeywordsInterface(Protocol):
     def continue_shopping(self) -> None: ...
@@ -12,10 +8,8 @@ class DialogKeywordsInterface(Protocol):
 
 class ProductsKeywordsCommons:
 
-    _dialog_keywords = None
-
-    def __init__(self, products_object: ProductsPageObjectInterface):
-        self._products_object = products_object
+    _dialog_keywords:DialogKeywordsInterface = None
+    _products_object:ProductsPageObjectInterface = None
 
     @keyword('Add products "${products}" to cart (continue shopping)')
     def add_multiple_profiles_to_cart(self, products:list):
@@ -33,5 +27,8 @@ class ProductsKeywordsCommons:
         self._products_object.take_screenshot(f'Serch for <b>{search_criteria}</b>')
 
     @not_keyword
-    def init_products_keywords_interfaces(self, dialog_keywords:DialogKeywordsInterface):
+    def init_products_keywords_interfaces(self, 
+                                          dialog_keywords:DialogKeywordsInterface, 
+                                          products_object: ProductsPageObjectInterface) -> None:
+        self._products_object = products_object
         self._dialog_keywords = dialog_keywords
