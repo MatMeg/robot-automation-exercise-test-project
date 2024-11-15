@@ -26,19 +26,23 @@ class PaymentPageObject(PageObjectModel):
     @not_keyword
     def input_card_cvv_on_payment(self, cvv:str) -> None:  
         self.log(f'Cvv input locator: {self.cvv_input}')
+        self.scroll_element_into_view(self.cvv_input)
         self.input_text(self.cvv_input, cvv)
     
     @not_keyword
     def input_card_expiration_month_on_payment(self, month:str) -> None:  
         self.log(f'Month input locator: {self.month_input}')
+        self.scroll_element_into_view(self.month_input)
         self.input_text(self.month_input, month)
     
     @not_keyword
     def input_card_year_on_payment(self, year:str) -> None:  
         self.log(f'Year input locator: {self.year_input}')
+        self.scroll_element_into_view(self.year_input)
         self.input_text(self.year_input, year)
     
     @not_keyword
     def click_pay_and_confirm_on_payment(self) -> None: 
         self.log(f'"Pay and Confirm" button locator: {self.pay_and_confirm_button}')
+        self.scroll_element_into_view(self.pay_and_confirm_button)
         self.click_button(self.pay_and_confirm_button)    

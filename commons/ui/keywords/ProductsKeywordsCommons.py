@@ -17,7 +17,7 @@ class ProductsKeywordsCommons:
         for product in products:
             self._products_object.scroll_product_to_view_on_products(product)
             self._products_object.take_screenshot(f'Add "{product}" to cart')
-            self._products_object.click_product_add_to_cart_on_products(product)
+            self._products_object.click_product_add_to_cart_on_products(product)  
             self._dialog_keywords.continue_shopping()
 
     @keyword('Search for "${serch_criteria}" on products')

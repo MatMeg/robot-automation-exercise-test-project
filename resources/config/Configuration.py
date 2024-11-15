@@ -20,19 +20,18 @@ CHROME_PATH = os.environ.get('CHROME_PATH', _default_chrome_path)
 CHROME_DRIVER_PATH = os.environ.get('CHROME_DRIVER_PATH', _default_chrome_driver_path)
 _chrome_options = ChromeOptions()
 _chrome_options.add_argument('disable-notifications')
+_chrome_options.add_argument("--start-maximized")
 _chrome_options.add_experimental_option("excludeSwitches", ["disable-popup-blocking"])
-#_chrome_options.binary_location = CHROME_DRIVER_PATH
+_chrome_options.add_experimental_option("detach", True)
 
 FIREFOX_PATH = os.environ.get('FIREFOX_PATH', _default_firefox_path)
 FIREFOX_DRIVER_PATH = os.environ.get('FIREFOX_DRIVER_PATH', _default_firefox_driver_path)
 _firefox_options = FirefoxOptions()
-#_firefox_options.binary_location = FIREFOX_DRIVER_PATH
 
 if 'chrome' in BROWSER:
     DRIVER_PATH = os.environ.get('DRIVER_PATH', CHROME_DRIVER_PATH)
     BROWSER_PATH = os.environ.get('BROWSER_PATH', CHROME_PATH)
     BROWSER_OPTIONS = _chrome_options
-    #BROWSER_OPTIONS = f'add_argument("--disable-popup-blocking"); add_argument("--disable-notifications"); add_experimental_option("excludeSwitches", "disable-popup-blocking")'
 elif 'firefox' in BROWSER:
     DRIVER_PATH = os.environ.get('DRIVER_PATH', FIREFOX_DRIVER_PATH)
     BROWSER_PATH = os.environ.get('BROWSER_PATH', FIREFOX_PATH)

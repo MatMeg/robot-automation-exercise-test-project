@@ -9,8 +9,9 @@ NOT LOGGED IN USER ORDERS TWO PRODUCTS
         And Add "${SHIRTS}": "${ORDER_TWO_SHIRTS_DATA}[order_list][${SHIRTS}]" to cart
         And Proceed to Checkout products "${ORDER_TWO_SHIRTS_DATA}[order_list][${SHIRTS}]"
         And Proceed to "Register/Login" from "Checkout" dialog on "Cart" Page
-        And Login with valid credendial "${ORDER_TWO_SHIRTS_DATA}['login']"
+        And Login with valid credendial "${ORDER_TWO_SHIRTS_DATA}[login]"
         And Select "cart" on navbar
     When Proceed to Checkout products "${ORDER_TWO_SHIRTS_DATA}[order_list][${SHIRTS}]"
-        And Confirm payment with card "${ORDER_TWO_SHIRTS_DATA}['card']"
+        And Confirm "${ORDER_TWO_SHIRTS_DATA}[order_list][${SHIRTS}]" Order
+        And Confirm payment with card "${ORDER_TWO_SHIRTS_DATA}[card]"
     Then Order has been confirmed

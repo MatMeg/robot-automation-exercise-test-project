@@ -10,6 +10,16 @@ class PageObjectModel(SeleniumLibrary):
         self.builtIn = builtIn
     
     @not_keyword
+    def click_with_java_script(self, query_locator :str) -> None:
+        script = 'try{\n'+ \
+        f'{query_locator}.click();\n' +\
+        'return true;\n'\
+        '}catch(error){\n'\
+        'return false;\n'\
+        '}'
+        self.execute_javascript(script)
+    
+    @not_keyword
     def log(self, msg:str):
         self.builtIn.log(f'<p>{msg}</p>',html=True)
 

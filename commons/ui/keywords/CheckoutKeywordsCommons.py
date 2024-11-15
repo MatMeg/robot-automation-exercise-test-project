@@ -5,8 +5,8 @@ class CheckoutKeywordsCommons:
     
     _checkout_page_object : CheckoutPageObjectInterface = None        
 
-    @keyword('Place Order of "${products_list}"')
-    def place_products_order(self, products_list:list):
+    @keyword('Confirm "${products_list}" Order')
+    def confirm_products_order(self, products_list:list):
         '''
         Verify expected products are visible on "Checkout" page and then place order
         :Args:

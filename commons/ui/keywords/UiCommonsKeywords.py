@@ -29,13 +29,21 @@ class UiCommonsKeywords(CartKeywordsCommons,
         PaymentKeywordsCommons.__init__(self)
         ProductsKeywordsCommons.__init__(self)
         NavBarKeywordsCommons.__init__(self)
+        _nav_bar_obj = NavBarKeywordsCommons()
+        _nav_bar_obj.init_nav_bar_keywords_interfaces(ui_commons)
+        _dialog_obj = DialogKeywordsCommons()
+        _dialog_obj.init_dialogs_keywords_interfaces(ui_commons)
         self.init_cart_keywords_interfaces(ui_commons)
         self.init_checkout_keywords_interfaces(ui_commons)
         self.init_confirmation_keywords_interfaces(ui_commons)
-        self.init_login_keywords_interfaces(self, ui_commons)
+        self.init_dialogs_keywords_interfaces(ui_commons)
+        self.init_login_keywords_interfaces(_nav_bar_obj, ui_commons)
         self.init_model_keywords_interfaces(ui_commons) 
         self.init_payment_keywords_interfaces(ui_commons)
-        self.init_products_keywords_interfaces(self, ui_commons)
+        self.init_products_keywords_interfaces(_dialog_obj, ui_commons)
         self.init_nav_bar_keywords_interfaces(ui_commons) 
+
+    def test_this_shit(self, producs):
+        self.place_products_order(producs)
           
     

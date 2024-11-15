@@ -10,7 +10,7 @@ class ConfirmationPageObject(PageObjectModel):
 
     @not_keyword
     def verify_order_confirmed_on_confirmation(self) -> None:
-        expected_message = 'Order Placed!'
+        expected_message = 'ORDER PLACED!'
         self.log(f'Verify text \"{expected_message}\" is displayed on page')
         displayed_message = self.get_text(self.confirmation_text)
         self.builtIn.should_be_equal(expected_message, displayed_message)
